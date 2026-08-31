@@ -208,7 +208,15 @@
   }
 
   /* ---------- 주제 ---------- */
-  .topics { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .topics { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  @media (min-width: 34rem) {
+    .topics { grid-template-columns: 1fr 1fr; }
+    .topic.pivot { grid-column: 1 / -1; }
+  }
+  @media (min-width: 54rem) {
+    .topics { grid-template-columns: repeat(3, 1fr); }
+    .topic.pivot { grid-column: auto; }
+  }
   .topic { background: var(--surface); padding: 1.7rem 1.4rem; display: flex; flex-direction: column; gap: .7rem; }
   .topic .en { color: var(--ink-3); }
   .topic h3 { margin: 0; font-size: var(--step-1); font-weight: 600; letter-spacing: -.025em; line-height: 1.4; }
