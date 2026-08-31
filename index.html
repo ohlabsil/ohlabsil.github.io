@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="오랩실은 엣지 컴퓨팅과 AI 에이전트가 겹치는 자리를 파는 사적 스터디입니다. 국민대 소프트웨어융합대학원 재학생 3인이 격주로 모입니다.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="오랩실">
+<meta property="og:title" content="오랩실 — 에이전트를 서버에서 끌어내립니다">
+<meta property="og:description" content="엣지 컴퓨팅과 AI 에이전트가 겹치는 자리. 격주 토요일 두 시간, 회비 없음.">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%95%B9%3C/text%3E%3C/svg%3E">
+<title>오랩실 사이트 시안</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&display=swap">
+
+<style>
+  :root {
+    --ground: #E7E5DF;
+    --surface: #F4F3EF;
+    --ink: #16171B;
+    --ink-2: #56575F;
+    --ink-3: #83848C;
+    --line: #C9C6BE;
+    --line-soft: #D8D5CD;
+    --accent: #1F4FD8;
+    --signal: #B65E05;
+    --dot: rgba(22, 23, 27, .13);
+
+    --step--1: clamp(.76rem, .73rem + .12vw, .82rem);
+    --step-0: clamp(1rem, .96rem + .2vw, 1.08rem);
+    --step-1: clamp(1.18rem, 1.1rem + .35vw, 1.34rem);
+    --step-2: clamp(1.5rem, 1.32rem + .8vw, 1.95rem);
+    --step-3: clamp(1.9rem, 1.5rem + 1.7vw, 2.9rem);
+    --step-4: clamp(3rem, 2.1rem + 4.2vw, 5.6rem);
+
+    --sans: "IBM Plex Sans KR", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+
+    --shell: 60rem;
+    --measure: 34rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #0F1117;
+      --surface: #171A22;
+      --ink: #EDEEF2;
+      --ink-2: #A2A6B2;
+      --ink-3: #787C89;
+      --line: #2C3140;
+      --line-soft: #232733;
+      --accent: #8AA6FF;
+      --signal: #F0A23C;
+      --dot: rgba(237, 238, 242, .10);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground: #0F1117;
+    --surface: #171A22;
+    --ink: #EDEEF2;
+    --ink-2: #A2A6B2;
+    --ink-3: #787C89;
+    --line: #2C3140;
+    --line-soft: #232733;
+    --accent: #8AA6FF;
+    --signal: #F0A23C;
+    --dot: rgba(237, 238, 242, .10);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background-color: var(--ground);
+    background-image: radial-gradient(var(--dot) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-position: -1px -1px;
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: var(--step-0);
+    font-weight: 400;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    word-break: keep-all;
+  }
+
+  .shell { max-width: var(--shell); margin-inline: auto; padding-inline: clamp(1.25rem, 5vw, 3rem); }
+
+  .mono {
+    font-family: var(--mono);
+    font-size: var(--step--1);
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---------- 시안 고지 ---------- */
+  .notice {
+    border-bottom: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--signal);
+    text-align: center;
+    padding: .6rem 1rem;
+  }
+
+  /* ---------- 마키(캐비닛 상단 간판) ---------- */
+  .marquee {
+    border-bottom: 1px solid var(--line);
+    background: var(--surface);
+    padding-block: clamp(2.4rem, 6vw, 4.5rem);
+    position: relative;
+  }
+  .marquee::before,
+  .marquee::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0;
+    height: 1px;
+    background: var(--line-soft);
+  }
+  .marquee::before { top: 6px; }
+  .marquee::after { bottom: 6px; }
+
+  .marquee-tags {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    color: var(--ink-3);
+    margin-bottom: clamp(1.4rem, 3vw, 2.2rem);
+  }
+  .marquee-tags .credit { color: var(--signal); }
+
+  .wordmark {
+    display: flex;
+    align-items: flex-end;
+    gap: .18em;
+    font-size: var(--step-4);
+    font-weight: 700;
+    letter-spacing: -.045em;
+    line-height: 1;
+    margin: 0;
+  }
+  .wordmark .block {
+    width: .16em;
+    height: .58em;
+    background: var(--accent);
+    margin-bottom: .1em;
+    flex: none;
+    animation: blink 1.3s steps(1) infinite;
+  }
+
+  .lede {
+    margin: clamp(1.6rem, 4vw, 2.4rem) 0 0;
+    font-size: var(--step-3);
+    font-weight: 600;
+    letter-spacing: -.025em;
+    line-height: 1.3;
+    max-width: 22ch;
+    text-wrap: balance;
+  }
+  .sub {
+    margin: 1rem 0 0;
+    color: var(--ink-2);
+    max-width: var(--measure);
+    font-size: var(--step-1);
+    font-weight: 300;
+    line-height: 1.65;
+  }
+
+  /* ---------- 섹션 ---------- */
+  main { display: flex; flex-direction: column; }
+
+  .band { border-bottom: 1px solid var(--line); padding-block: clamp(3rem, 8vw, 5.5rem); }
+  .band:last-of-type { border-bottom: 0; }
+  .band-inner { display: flex; flex-direction: column; gap: clamp(1.6rem, 4vw, 2.4rem); }
+
+  .eyebrow { color: var(--ink-3); display: flex; align-items: center; gap: .9rem; }
+  .eyebrow::after { content: ""; flex: 1; height: 1px; background: var(--line-soft); }
+
+  h2 {
+    font-size: var(--step-2);
+    font-weight: 700;
+    letter-spacing: -.03em;
+    line-height: 1.35;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  p { margin: 0; max-width: var(--measure); }
+  .dim { color: var(--ink-2); font-weight: 300; }
+
+  /* ---------- 이름의 뜻 ---------- */
+  .glosses { display: flex; flex-direction: column; gap: 1.4rem; }
+  .gloss { display: grid; grid-template-columns: 6.5rem 1fr; gap: 1.5rem; align-items: baseline; }
+  .gloss dt {
+    font-size: var(--step-1);
+    font-weight: 700;
+    letter-spacing: -.03em;
+    color: var(--accent);
+  }
+  .gloss dd { margin: 0; color: var(--ink-2); max-width: var(--measure); font-weight: 300; }
+  @media (max-width: 34rem) {
+    .gloss { grid-template-columns: 1fr; gap: .3rem; }
+  }
+
+  /* ---------- 주제 ---------- */
+  .topics { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .topic { background: var(--surface); padding: 1.7rem 1.4rem; display: flex; flex-direction: column; gap: .7rem; }
+  .topic .en { color: var(--ink-3); }
+  .topic h3 { margin: 0; font-size: var(--step-1); font-weight: 600; letter-spacing: -.025em; line-height: 1.4; }
+  .topic p { color: var(--ink-2); font-size: var(--step--1); font-weight: 300; line-height: 1.75; max-width: none; }
+  .topic.pivot { background: var(--accent); }
+  .topic.pivot .en { color: rgba(255,255,255,.62); }
+  .topic.pivot h3, .topic.pivot p { color: #fff; }
+  .topic.pivot p { color: rgba(255,255,255,.82); }
+
+  /* ---------- 멤버 ---------- */
+  .members { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: clamp(1.5rem, 4vw, 2.5rem); }
+  .member { display: flex; flex-direction: column; gap: .4rem; border-top: 2px solid var(--ink); padding-top: 1rem; }
+  .member .name { font-size: var(--step-2); font-weight: 700; letter-spacing: -.035em; line-height: 1.2; }
+  .member .role { color: var(--accent); }
+  .member p { color: var(--ink-2); font-size: var(--step--1); font-weight: 300; line-height: 1.75; max-width: none; }
+  .member .todo { color: var(--signal); }
+
+  /* ---------- 운영 사양 ---------- */
+  .specs { border: 1px solid var(--line); background: var(--surface); overflow-x: auto; }
+  .specs table { width: 100%; border-collapse: collapse; min-width: 26rem; }
+  .specs th, .specs td { text-align: left; padding: .95rem 1.4rem; border-bottom: 1px solid var(--line-soft); vertical-align: baseline; }
+  .specs tr:last-child th, .specs tr:last-child td { border-bottom: 0; }
+  .specs th { color: var(--ink-3); font-weight: 400; width: 8.5rem; white-space: nowrap; }
+  .specs td { font-variant-numeric: tabular-nums; }
+
+  /* ---------- 요즘(로그) ---------- */
+  .log { display: flex; flex-direction: column; border-top: 1px solid var(--line-soft); }
+  .log-row { display: grid; grid-template-columns: 7rem 1fr; gap: 1.5rem; padding: 1.05rem 0; border-bottom: 1px solid var(--line-soft); align-items: baseline; }
+  .log-row time { color: var(--ink-3); }
+  .log-row .what { color: var(--ink); }
+  .log-row .what small { display: block; color: var(--ink-3); font-size: var(--step--1); font-weight: 300; line-height: 1.65; margin-top: .15rem; }
+  @media (max-width: 34rem) {
+    .log-row { grid-template-columns: 1fr; gap: .25rem; }
+  }
+
+  /* ---------- 함께하기 ---------- */
+  .join { background: var(--surface); border: 1px solid var(--line); padding: clamp(1.75rem, 5vw, 3rem); display: flex; flex-direction: column; gap: 1.4rem; }
+  .join p { max-width: var(--measure); }
+
+  .cta {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: .7rem;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    padding: .9rem 1.6rem;
+    font-weight: 600;
+    letter-spacing: -.01em;
+    transition: filter .15s ease;
+  }
+  .cta:hover { filter: brightness(1.12); }
+  .cta:focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; }
+  .cta .caret {
+    display: inline-block;
+    width: .5em; height: 1em;
+    background: currentColor;
+    animation: blink 1.3s steps(1) infinite;
+  }
+
+  @keyframes blink { 50% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) {
+    .cta .caret, .wordmark .block { animation: none; }
+  }
+
+  .fineprint { display: flex; flex-direction: column; gap: .35rem; color: var(--ink-3); font-size: var(--step--1); font-weight: 300; line-height: 1.75; }
+
+  footer { border-top: 1px solid var(--line); padding-block: 2.5rem 3.5rem; }
+  .foot-inner { display: flex; flex-wrap: wrap; gap: 1.5rem 3rem; justify-content: space-between; align-items: flex-start; }
+  .foot-inner p { color: var(--ink-3); font-size: var(--step--1); font-weight: 300; line-height: 1.75; max-width: 30rem; }
+  .people { display: flex; flex-direction: column; gap: .3rem; color: var(--ink-3); }
+  .people b { color: var(--ink-2); font-weight: 500; }
+</style>
+</head>
+<body>
+<div class="notice mono">시안 · 내용은 예시로 채워져 있습니다</div>
+
+<header class="marquee">
+  <div class="shell">
+    <div class="marquee-tags mono">
+      <span>국민대 소프트웨어융합대학원 · 사적 스터디</span>
+      <span class="credit">credit 03</span>
+    </div>
+    <h1 class="wordmark">오랩실<span class="block" aria-hidden="true"></span></h1>
+    <p class="lede">에이전트를 서버에서 끌어내립니다</p>
+    <p class="sub">클라우드에 묻지 않고, 손안의 기기에서 스스로 판단하고 실행하는 AI. 엣지 컴퓨팅과 AI 에이전트가 겹치는 자리를 팝니다.</p>
+  </div>
+</header>
+
+<main>
+  <section class="band">
+    <div class="shell band-inner">
+      <p class="eyebrow mono">주제</p>
+      <h2>둘을 따로 보면 이미 남들이 다 했습니다</h2>
+      <p class="dim">엣지 컴퓨팅도, AI 에이전트도 각각은 붐빕니다. 비어 있는 건 그 사이입니다. 에이전트는 아직 거의 전부 남의 서버에서 돌고 있습니다.</p>
+      <div class="topics">
+        <article class="topic">
+          <span class="en mono">edge computing</span>
+          <h3>엣지 컴퓨팅</h3>
+          <p>연산을 기기 쪽으로 당깁니다. 응답 속도, 운영 비용, 데이터가 밖으로 나가느냐 마느냐 &mdash; 세 가지가 전부 여기서 갈립니다.</p>
+        </article>
+        <article class="topic">
+          <span class="en mono">ai agents</span>
+          <h3>AI 에이전트</h3>
+          <p>답하는 AI에서 실행하는 AI로. 스스로 계획을 세우고 도구를 부르고, 틀리면 다시 시도하는 구조를 뜯어봅니다.</p>
+        </article>
+        <article class="topic pivot">
+          <span class="en mono">on-device agents</span>
+          <h3>온디바이스 에이전트</h3>
+          <p>둘이 만나는 자리. 작은 모델로 어디까지 되는지, 어디서부터 무너지는지. 오랩실이 실제로 파는 곳입니다.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="shell band-inner">
+      <p class="eyebrow mono">이름</p>
+      <h2>두 가지 뜻을 겹쳐 지었습니다</h2>
+      <dl class="glosses">
+        <div class="gloss">
+          <dt>오!</dt>
+          <dd>논문 한 편 읽고 &ldquo;오!&rdquo; 소리가 나오면 그날 모임은 성공입니다. 놀랄 만한 걸 찾는 게 목적입니다.</dd>
+        </div>
+        <div class="gloss">
+          <dt>오락실</dt>
+          <dd>재미없으면 안 모입니다. 의무감으로 굴러가는 스터디는 석 달을 못 넘긴다고 봅니다.</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="shell band-inner">
+      <p class="eyebrow mono">멤버</p>
+      <h2>세 사람이 굴리고 있습니다</h2>
+      <div class="members">
+        <div class="member">
+          <span class="name">오세용</span>
+          <span class="role mono">리드</span>
+          <p>AI 스타트업 라프디를 운영하면서 대학원에 다니고 있습니다. 온디바이스 경량화로 논문을 쓰고 있습니다.</p>
+        </div>
+        <div class="member">
+          <span class="name">김희경</span>
+          <span class="role mono">코어</span>
+          <p class="todo">[소개 문구 작성 필요]</p>
+        </div>
+        <div class="member">
+          <span class="name">장원준</span>
+          <span class="role mono">코어</span>
+          <p class="todo">[소개 문구 작성 필요]</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="shell band-inner">
+      <p class="eyebrow mono">운영</p>
+      <h2>격주 두 시간, 그게 전부입니다</h2>
+      <p class="dim">모임을 크게 만들 생각이 없습니다. 오래 굴러가는 쪽이 중요해서, 부담이 되는 것은 처음부터 넣지 않았습니다.</p>
+      <div class="specs">
+        <table>
+          <tbody>
+            <tr><th class="mono">주기</th><td>격주 토요일</td></tr>
+            <tr><th class="mono">시간</th><td>저녁 7시 &ndash; 9시 (2시간)</td></tr>
+            <tr><th class="mono">방식</th><td>온라인 · 오프라인 비정기</td></tr>
+            <tr><th class="mono">진행</th><td>논문 발제 1편 + 트렌드 브리핑 15분</td></tr>
+            <tr><th class="mono">인원</th><td>코어 3명 · 오픈 세미나 정원 12명</td></tr>
+            <tr><th class="mono">회비</th><td>없음</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="shell band-inner">
+      <p class="eyebrow mono">요즘</p>
+      <h2>무엇을 읽고 무엇을 굴리고 있는지</h2>
+      <div class="log">
+        <div class="log-row">
+          <time class="mono" datetime="2026-08">2026.08</time>
+          <span class="what">온디바이스 에이전트 실험 진행 중<small>7B 이하 모델로 도구 호출이 어디까지 버티는지</small></span>
+        </div>
+        <div class="log-row">
+          <time class="mono" datetime="2026-08">2026.08</time>
+          <span class="what">엣지에서의 에이전트 루프 비용 계산<small>한 번 생각하고 한 번 도구를 부르는 데 실제로 얼마가 드는가</small></span>
+        </div>
+        <div class="log-row">
+          <time class="mono" datetime="2026-07">2026.07</time>
+          <span class="what">ReAct · Toolformer 다시 읽기<small>에이전트라는 말이 유행하기 전의 에이전트</small></span>
+        </div>
+        <div class="log-row">
+          <time class="mono" datetime="2026-07">2026.07</time>
+          <span class="what">첫 모임<small>세 명이서 시작했습니다</small></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="shell band-inner">
+      <p class="eyebrow mono">함께하기</p>
+      <div class="join">
+        <h2>서버 없이 도는 에이전트, 아직 아무도 제대로 못 만들었습니다</h2>
+        <p>그래서 지금 시작하기 좋습니다. 엣지와 에이전트에 관심이 있다면 전공도 소속도 가리지 않습니다. 논문을 써본 적이 없어도 괜찮습니다. 대신 격주 두 시간은 비워두셔야 합니다.</p>
+        <p class="dim">한 학기를 함께 굴린 분께는 논문을 같이 쓰는 코어 자리를 제안드립니다. 미리 정해두지 않고, 하다 보면 자연스럽게 갈립니다.</p>
+        <a class="cta" href="#">참가 신청<span class="caret" aria-hidden="true"></span></a>
+        <div class="fineprint">
+          <span>&middot; 신청 후 간단히 대화를 나눈 뒤 다음 모임부터 참여하시게 됩니다.</span>
+          <span>&middot; 정원이 차면 다음 기수로 안내드립니다.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="shell foot-inner">
+    <p>오랩실은 국민대학교 소프트웨어융합대학원 재학생들이 자발적으로 만든 사적 스터디입니다. 학교의 공식 연구 기관이 아니며, 학교를 대표하지 않습니다.</p>
+    <div class="people mono">
+      <span>리드 <b>오세용</b></span>
+      <span>2026 &mdash;</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
