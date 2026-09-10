@@ -5,6 +5,12 @@
 - 공개 주소: https://ohlabsil.github.io
 - 정적 페이지 한 장(`index.html`). 빌드 도구 없음 — 파일을 고쳐 push하면 반영됩니다.
 
+## 사람 추가
+
+- 지도교수: `.advisor` 한 행
+- 리드 · 코어: `.members` 안의 `.member` 카드
+- 멤버: `.roster` 안에 `.roster-row` 한 줄. 코어로 올라가면 행을 지우고 카드로 옮깁니다.
+
 ## 남은 할 일
 
 - [ ] 참가 신청 링크 연결 (현재 `#`)

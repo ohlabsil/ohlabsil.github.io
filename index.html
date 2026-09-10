@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="오랩실은 엣지 컴퓨팅과 AI 에이전트가 겹치는 자리를 파는 사적 스터디입니다. 국민대 소프트웨어융합대학원 재학생 3인이 격주로 모입니다.">
+<meta name="description" content="오랩실은 엣지 컴퓨팅과 AI 에이전트가 겹치는 자리를 파는 사적 스터디입니다. 국민대 소프트웨어융합대학원 재학생들이 만들어 격주로 모입니다.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="오랩실">
 <meta property="og:title" content="오랩실 — 비행기 모드에서도 돌아야 진짜 AI입니다">
@@ -224,6 +224,28 @@
   .member .role { color: var(--accent); }
   .member p { color: var(--ink-2); font-size: var(--step--1); font-weight: 300; line-height: 1.75; max-width: none; }
 
+  .tier { display: flex; flex-direction: column; gap: .3rem; margin-top: clamp(.5rem, 2vw, 1rem); }
+  .roster { display: flex; flex-direction: column; }
+  .roster-row { display: grid; grid-template-columns: 8.5rem 1fr; gap: 1.5rem; padding: .95rem 0; border-bottom: 1px solid var(--line-soft); align-items: baseline; }
+  .roster-row .name { font-weight: 600; letter-spacing: -.02em; }
+  .roster-row .what { color: var(--ink-2); font-size: var(--step--1); font-weight: 300; line-height: 1.75; }
+  @media (max-width: 34rem) {
+    .roster-row { grid-template-columns: 1fr; gap: .2rem; }
+  }
+
+  /* ---------- 지도교수 ---------- */
+  .advisor { display: grid; grid-template-columns: 13rem 1fr; gap: 1rem clamp(1.5rem, 4vw, 3rem); border-top: 2px solid var(--ink); padding-top: 1rem; }
+  .advisor-id { display: flex; flex-direction: column; gap: .4rem; }
+  .advisor .name { font-size: var(--step-2); font-weight: 700; letter-spacing: -.035em; line-height: 1.2; }
+  .advisor .role { color: var(--accent); }
+  .advisor .affil { color: var(--ink-3); }
+  .advisor-body { display: flex; flex-direction: column; gap: .9rem; }
+  .advisor-body p { color: var(--ink-2); font-weight: 300; max-width: none; }
+  .advisor-body .nb { white-space: nowrap; }
+  @media (max-width: 34rem) {
+    .advisor { grid-template-columns: 1fr; }
+  }
+
   /* ---------- 운영 사양 ---------- */
   .specs { border: 1px solid var(--line); background: var(--surface); overflow-x: auto; }
   .specs table { width: 100%; border-collapse: collapse; min-width: 26rem; }
@@ -344,6 +366,23 @@
 
   <section class="band">
     <div class="shell band-inner">
+      <p class="eyebrow mono">지도교수</p>
+      <h2>논문의 방향을 함께 봐주십니다</h2>
+      <div class="advisor">
+        <div class="advisor-id">
+          <span class="name">이창우</span>
+          <span class="role mono">지도교수</span>
+          <span class="affil mono">국민대학교 교수</span>
+        </div>
+        <div class="advisor-body">
+          <p>컴퓨터 네트워크, 인공지능, 엣지 컴퓨팅, IoT, 클라우드를 연구하십니다.<br>오랩실에서는 주제를 정하는 일부터 실험 설계, 논문 작성, <span class="nb">학술지·학술대회</span> 투고까지 지도하십니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="shell band-inner">
       <p class="eyebrow mono">멤버</p>
       <h2>세 사람이 굴리고 있습니다</h2>
       <div class="members">
@@ -361,6 +400,15 @@
           <span class="name">장원준</span>
           <span class="role mono">코어</span>
           <p>클라우드 기업에서 DevOps 플랫폼을 운영하며 대학원에 다니고 있습니다.<br>파이프라인 동시성 제어로 논문을 이미 거의 다 썼습니다.</p>
+        </div>
+      </div>
+      <div class="tier">
+        <p class="eyebrow mono">함께하는 멤버</p>
+        <div class="roster">
+          <div class="roster-row">
+            <span class="name">박진혁</span>
+            <span class="what">JAVA 백엔드 엔지니어로 인사 시스템을 운영하고 있고, 인공지능 석사를 마쳤습니다.<br>그룹 AX를 담당하며 사내 AI 플랫폼의 전사 확산을 이끌고 있습니다.</span>
+          </div>
         </div>
       </div>
     </div>
