@@ -283,16 +283,19 @@
   }
   .cta:hover { filter: brightness(1.12); }
   .cta:focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; }
-  .cta .caret {
+  .cta .caret,
+  .topic .caret {
     display: inline-block;
     width: .5em; height: 1em;
     background: currentColor;
     animation: blink 1.3s steps(1) infinite;
   }
 
+  .topic .caret { margin-left: .4em; vertical-align: -.15em; }
+
   @keyframes blink { 50% { opacity: 0; } }
   @media (prefers-reduced-motion: reduce) {
-    .cta .caret, .wordmark .block { animation: none; }
+    .cta .caret, .topic .caret, .wordmark .block { animation: none; }
   }
 
   .fineprint { display: flex; flex-direction: column; gap: .35rem; color: var(--ink-3); font-size: var(--step--1); font-weight: 300; line-height: 1.75; }
@@ -424,13 +427,39 @@
           <tbody>
             <tr><th class="mono">주기</th><td>격주 토요일</td></tr>
             <tr><th class="mono">시간</th><td>저녁 7시 &ndash; 9시 (2시간)</td></tr>
-            <tr><th class="mono">방식</th><td>온라인 · 오프라인 비정기</td></tr>
+            <tr><th class="mono">방식</th><td>온라인 격주 · 오프라인 분기 1회</td></tr>
             <tr><th class="mono">진행</th><td>논문 발제 1편 + 트렌드 브리핑 15분</td></tr>
             <tr><th class="mono">인원</th><td>코어 3명 · 오픈 세미나 정원 12명</td></tr>
             <tr><th class="mono">회비</th><td>없음</td></tr>
           </tbody>
         </table>
       </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="shell band-inner">
+      <p class="eyebrow mono">오프라인 세미나</p>
+      <h2>석 달에 한 번, 오락실 문을 엽니다</h2>
+      <p class="dim">평소에는 격주로 화면 너머에서 만납니다.<br>분기마다 한 번은 노트북을 들고 한자리에 모입니다.</p>
+      <div class="topics">
+        <article class="topic">
+          <span class="en mono">offline</span>
+          <h3>화면 밖에서</h3>
+          <p>음소거를 풀 타이밍을 재지 않아도 됩니다. 온라인에서 끝까지 못 간 이야기를 마주 앉아 이어갑니다.</p>
+        </article>
+        <article class="topic">
+          <span class="en mono">quarterly</span>
+          <h3>석 달 치를 한 판에</h3>
+          <p>그동안 읽은 논문과 굴려 본 실험을 한 테이블에 펼칩니다. 잘된 것만큼 무너진 지점도 꺼내 놓습니다.</p>
+        </article>
+        <article class="topic pivot">
+          <span class="en mono">press start<span class="caret" aria-hidden="true"></span></span>
+          <h3>처음 와도 됩니다</h3>
+          <p>오랩실 멤버가 아니어도 괜찮습니다. 한 판 구경하고 가셔도 되고, 그러다 눌러앉으셔도 됩니다.</p>
+        </article>
+      </div>
+      <p class="dim">일정과 장소는 회차마다 따로 알려드립니다.</p>
     </div>
   </section>
 
