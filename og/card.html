@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;600;700&display=swap">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    background-color: #F4F3EF;
+    background-image: radial-gradient(rgba(22, 23, 27, .11) 1.5px, transparent 1.5px);
+    background-size: 32px 32px;
+    color: #16171B;
+    font-family: "IBM Plex Sans KR", "Apple SD Gothic Neo", sans-serif;
+    word-break: keep-all;
+    position: relative;
+  }
+  .frame { position: absolute; inset: 0; padding: 72px 88px; display: flex; flex-direction: column; }
+  .rule { position: absolute; left: 0; right: 0; height: 1px; background: #D8D5CD; }
+  .rule.top { top: 10px; } .rule.bottom { bottom: 10px; }
+  .tags { display: flex; justify-content: space-between; font-family: "IBM Plex Mono", monospace; font-size: 22px; letter-spacing: .14em; text-transform: uppercase; color: #83848C; }
+  .tags .credit { color: #B65E05; }
+  .wordmark { margin: 44px 0 0; display: flex; align-items: flex-end; gap: 22px; font-size: 150px; font-weight: 700; letter-spacing: -.045em; line-height: 1; }
+  .wordmark .block { width: 24px; height: 88px; background: #1F4FD8; margin-bottom: 14px; }
+  .lede { margin: 40px 0 0; font-size: 64px; font-weight: 600; letter-spacing: -.03em; line-height: 1.2; }
+  .foot { margin-top: auto; display: flex; justify-content: space-between; align-items: baseline; }
+  .sub { font-size: 26px; font-weight: 300; color: #56575F; }
+  .url { font-family: "IBM Plex Mono", monospace; font-size: 22px; letter-spacing: .06em; color: #1F4FD8; }
+</style>
+</head>
+<body>
+  <div class="rule top"></div><div class="rule bottom"></div>
+  <div class="frame">
+    <div class="tags"><span>ai research community</span><span class="credit">credit 03</span></div>
+    <div class="wordmark">오랩실<span class="block"></span></div>
+    <div class="lede">AI의 사용자에서, 저자로</div>
+    <div class="foot">
+      <span class="sub">직접 실험하고 결과를 논문으로 남깁니다</span>
+      <span class="url">ohlabsil.github.io</span>
+    </div>
+  </div>
+</body>
+</html>
