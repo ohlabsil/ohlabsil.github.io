@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="오랩실은 엣지 컴퓨팅과 AI 에이전트가 겹치는 자리를 파는 AI research community입니다.">
+<meta name="description" content="오랩실은 현업 엔지니어와 대학원생이 모인 AI research community입니다. 트렌드를 따라가는 대신, 직접 실험하고 결과를 논문으로 남깁니다.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="오랩실">
-<meta property="og:title" content="오랩실 — 비행기 모드에서도 돌아야 진짜 AI입니다">
-<meta property="og:description" content="엣지 컴퓨팅과 AI 에이전트가 겹치는 자리. 격주 토요일 두 시간, 회비 없음.">
+<meta property="og:title" content="오랩실 — AI의 사용자에서, 저자로">
+<meta property="og:description" content="직접 실험하고 결과를 논문으로 남기는 AI research community. 격주 토요일 두 시간, 회비 없음.">
 <meta property="og:locale" content="ko_KR">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%95%B9%3C/text%3E%3C/svg%3E">
@@ -256,6 +256,9 @@
   .topic.pivot .en { color: rgba(255,255,255,.62); }
   .topic.pivot h3, .topic.pivot p { color: #fff; }
   .topic.pivot p { color: rgba(255,255,255,.82); }
+  .now { color: var(--ink-3); max-width: none; line-height: 2; }
+  .now b { color: var(--accent); font-weight: 500; margin-right: .6rem; }
+  .now span { white-space: nowrap; }
 
   /* ---------- 멤버 ---------- */
   .members { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: clamp(1.5rem, 4vw, 2.5rem); }
@@ -281,7 +284,7 @@
   .advisor .affil { color: var(--ink-3); }
   .advisor-body { display: flex; flex-direction: column; gap: .9rem; }
   .advisor-body p { color: var(--ink-2); font-weight: 300; max-width: none; }
-  .advisor-body .nb { white-space: nowrap; }
+  .nb { white-space: nowrap; }
   @media (max-width: 34rem) {
     .advisor { grid-template-columns: 1fr; }
   }
@@ -368,34 +371,35 @@
       </span>
     </div>
     <h1 class="wordmark">오랩실<span class="block" aria-hidden="true"></span></h1>
-    <p class="lede">비행기 모드에서도 돌아야 진짜 AI입니다</p>
-    <p class="sub">인터넷이 끊겨도 기기 안에서 스스로 판단하고 실행하는 AI. 오랩실은 엣지 컴퓨팅과 AI 에이전트가 겹치는 자리를 팝니다.</p>
+    <p class="lede">AI의 사용자에서, 저자로</p>
+    <p class="sub">오랩실은 현업 엔지니어와 대학원생이 모인 <span class="nb">AI research community</span>입니다. 트렌드를 따라가는 대신, 직접 실험하고 결과를 논문으로 남깁니다.</p>
   </div>
 </header>
 
 <main>
   <section class="band">
     <div class="shell band-inner">
-      <p class="eyebrow mono">주제</p>
-      <h2>둘을 따로 보면 이미 남들이 다 했습니다</h2>
-      <p class="dim">엣지 컴퓨팅도, AI 에이전트도 각각은 붐빕니다. 비어 있는 건 그 사이입니다. 에이전트는 아직 대부분 데이터센터 안에서만 돕니다.</p>
+      <p class="eyebrow mono">하는 일</p>
+      <h2>쓰는 법 대신, 만드는 법을 묻습니다</h2>
+      <p class="dim">AI를 잘 쓰는 요령은 이미 넘쳐납니다.<br>오랩실은 그 AI가 왜 그렇게 동작하는지, 어디서 무너지는지를 직접 확인합니다.</p>
       <div class="topics">
         <article class="topic">
-          <span class="en mono">edge computing</span>
-          <h3>엣지 컴퓨팅</h3>
-          <p>연산을 기기 쪽으로 당깁니다. 응답 속도, 운영 비용, 데이터가 밖으로 나가느냐 마느냐 &mdash; 세 가지가 전부 여기서 갈립니다.</p>
+          <span class="en mono">read</span>
+          <h3>읽습니다</h3>
+          <p>요약본이 아니라 원문을 읽습니다. 격주로 논문 한 편을 발제하고, 그사이 나온 트렌드는 15분 안에 정리합니다.</p>
         </article>
         <article class="topic">
-          <span class="en mono">ai agents</span>
-          <h3>AI 에이전트</h3>
-          <p>답하는 AI에서 실행하는 AI로. 스스로 계획을 세우고 도구를 부르고, 틀리면 다시 시도하는 구조를 뜯어봅니다.</p>
+          <span class="en mono">run</span>
+          <h3>돌려봅니다</h3>
+          <p>읽은 걸 믿기 전에 직접 돌려봅니다. 잘 나온 숫자보다 무너진 지점을 더 오래 들여다봅니다.</p>
         </article>
         <article class="topic pivot">
-          <span class="en mono">on-device agents</span>
-          <h3>온디바이스 에이전트</h3>
-          <p>둘이 만나는 자리. 작은 모델로 어디까지 되는지, 어디서부터 무너지는지. 오랩실이 실제로 파는 곳입니다.</p>
+          <span class="en mono">write</span>
+          <h3>씁니다</h3>
+          <p>결과는 논문으로 남깁니다. 주제를 정하는 일부터 투고까지 지도교수와 함께 갑니다.</p>
         </article>
       </div>
+      <p class="now mono"><b>지금 파는 것</b> <span>on-device ai</span> · <span>ai agents</span> · <span>recommender systems</span> · <span>computer vision</span> · <span>robotics</span> · <span>fraud detection</span></p>
     </div>
   </section>
 
@@ -410,11 +414,11 @@
         </div>
         <div class="gloss">
           <dt>오지랖</dt>
-          <dd>넓게 기웃거립니다. 엣지 하는 사람은 에이전트를 안 보고, 에이전트 하는 사람은 기기를 안 봅니다. 그 사이는 오지랖을 부려야 보입니다.</dd>
+          <dd>넓게 기웃거립니다. 모델만 보는 사람은 현장을 모르고, 현장만 보는 사람은 모델을 모릅니다. 그 사이는 오지랖을 부려야 보입니다.</dd>
         </div>
         <div class="gloss">
           <dt>오락실</dt>
-          <dd>재미없으면 안 모입니다. 의무감으로 굴러가는 스터디는 석 달을 못 넘긴다고 봅니다.</dd>
+          <dd>재미없으면 안 모입니다. 의무감으로 굴러가는 모임은 석 달을 못 넘긴다고 봅니다.</dd>
         </div>
       </dl>
     </div>
@@ -423,7 +427,7 @@
   <section class="band">
     <div class="shell band-inner">
       <p class="eyebrow mono">지도교수</p>
-      <h2>논문의 방향을 함께 봐주십니다</h2>
+      <h2>저자가 되는 길을 함께 봐주십니다</h2>
       <div class="advisor">
         <div class="advisor-id">
           <span class="name">이창우</span>
@@ -490,7 +494,7 @@
     <div class="shell band-inner">
       <p class="eyebrow mono">운영</p>
       <h2>격주 두 시간, 그게 전부입니다</h2>
-      <p class="dim">모임을 크게 만들 생각이 없습니다.<br>오래 굴러가는 쪽이 중요해서, 부담이 되는 것은 처음부터 넣지 않았습니다.</p>
+      <p class="dim">부담이 되는 것은 처음부터 넣지 않았습니다.<br>오래 굴러가야 논문까지 갑니다.</p>
       <div class="specs">
         <table>
           <tbody>
@@ -549,8 +553,8 @@
     <div class="shell band-inner">
       <p class="eyebrow mono">함께하기</p>
       <div class="join">
-        <h2>기기 안에서 도는 에이전트, 아직 아무도 제대로 못 만들었습니다</h2>
-        <p>그래서 지금 시작하기 좋습니다.<br>엣지와 에이전트에 관심이 있다면 전공도 소속도 가리지 않습니다.<br>논문을 써본 적이 없어도 괜찮습니다. 대신 격주 두 시간은 비워두셔야 합니다.</p>
+        <h2>다음 논문의 저자 자리가 비어 있습니다</h2>
+        <p>AI를 쓰는 데서 멈추고 싶지 않다면, 전공도 소속도 가리지 않습니다.<br>논문을 써본 적이 없어도 괜찮습니다. 대신 격주 두 시간은 비워두셔야 합니다.</p>
         <p class="dim">한 학기를 함께 굴린 분께는 논문을 같이 쓰는 코어 자리를 제안드립니다.<br>미리 정해두지 않고, 하다 보면 자연스럽게 기회를 받습니다.</p>
         <div class="contact">
           <div class="contact-who">
