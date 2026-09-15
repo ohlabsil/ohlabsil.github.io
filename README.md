@@ -1,6 +1,6 @@
 # ohlabsil.github.io
 
-오랩실 홈페이지. 엣지 컴퓨팅과 AI 에이전트가 겹치는 자리를 파는 사적 스터디.
+오랩실 홈페이지. 엣지 컴퓨팅과 AI 에이전트가 겹치는 자리를 파는 AI research community.
 
 - 공개 주소: https://ohlabsil.github.io
 - 정적 페이지 한 장(`index.html`). 빌드 도구 없음 — 파일을 고쳐 push하면 반영됩니다.
