@@ -12,6 +12,13 @@
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%95%B9%3C/text%3E%3C/svg%3E">
 <title>오랩실</title>
+<script>
+  // 방문자가 토글로 고른 테마가 있으면 첫 페인트 전에 적용 (없으면 기기 설정을 따름)
+  try {
+    var saved = localStorage.getItem("theme");
+    if (saved === "dark" || saved === "light") document.documentElement.setAttribute("data-theme", saved);
+  } catch (e) {}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&display=swap">
@@ -124,6 +131,39 @@
     margin-bottom: clamp(1.4rem, 3vw, 2.2rem);
   }
   .marquee-tags .credit { color: var(--signal); }
+  .tags-end { display: inline-flex; align-items: center; gap: 1.1rem; flex: none; }
+
+  /* ---------- 테마 토글 ---------- */
+  :root { color-scheme: light; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { color-scheme: dark; } }
+  :root[data-theme="dark"] { color-scheme: dark; }
+
+  .theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: .55rem;
+    padding: 0;
+    background: none;
+    border: 0;
+    color: var(--ink-3);
+    line-height: 1;
+    cursor: pointer;
+  }
+  .theme-toggle:hover { color: var(--ink); }
+  .theme-toggle:focus-visible { outline: 2px solid var(--signal); outline-offset: 4px; }
+  .theme-toggle .track { position: relative; width: 1.9rem; height: 1rem; border: 1px solid currentColor; }
+  .theme-toggle .knob {
+    position: absolute;
+    top: 2px; left: 2px;
+    width: .55rem;
+    height: calc(100% - 4px);
+    background: currentColor;
+    transition: transform .15s ease;
+  }
+  .theme-toggle[aria-pressed="true"] .knob { transform: translateX(calc(1.9rem - .55rem - 6px)); background: var(--accent); }
+  @media (max-width: 34rem) {
+    .theme-toggle .label { display: none; }
+  }
 
   .wordmark {
     display: flex;
@@ -296,6 +336,7 @@
   @keyframes blink { 50% { opacity: 0; } }
   @media (prefers-reduced-motion: reduce) {
     .cta .caret, .topic .caret, .wordmark .block { animation: none; }
+    .theme-toggle .knob { transition: none; }
   }
 
   .fineprint { display: flex; flex-direction: column; gap: .35rem; color: var(--ink-3); font-size: var(--step--1); font-weight: 300; line-height: 1.75; }
@@ -312,7 +353,13 @@
   <div class="shell">
     <div class="marquee-tags mono">
       <span>국민대학교 소프트웨어융합대학원 · 사적 스터디</span>
-      <span class="credit">credit 03</span>
+      <span class="tags-end">
+        <span class="credit">credit 03</span>
+        <button class="theme-toggle mono" type="button" aria-pressed="false" aria-label="다크 모드">
+          <span class="label" aria-hidden="true">dark</span>
+          <span class="track" aria-hidden="true"><span class="knob"></span></span>
+        </button>
+      </span>
     </div>
     <h1 class="wordmark">오랩실<span class="block" aria-hidden="true"></span></h1>
     <p class="lede">비행기 모드에서도 돌아야 진짜 AI입니다</p>
@@ -514,5 +561,27 @@
     </div>
   </div>
 </footer>
+<script>
+  (function () {
+    var root = document.documentElement;
+    var toggle = document.querySelector(".theme-toggle");
+    var system = window.matchMedia("(prefers-color-scheme: dark)");
+
+    function isDark() {
+      var chosen = root.getAttribute("data-theme");
+      return chosen ? chosen === "dark" : system.matches;
+    }
+    function sync() { toggle.setAttribute("aria-pressed", String(isDark())); }
+
+    toggle.addEventListener("click", function () {
+      var next = isDark() ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      try { localStorage.setItem("theme", next); } catch (e) {}
+      sync();
+    });
+    if (system.addEventListener) system.addEventListener("change", sync);
+    sync();
+  })();
+</script>
 </body>
 </html>
