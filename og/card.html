@@ -2,42 +2,46 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;600;700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@600&display=swap">
 <style>
   * { box-sizing: border-box; }
   html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; }
   body {
-    background-color: #F4F3EF;
-    background-image: radial-gradient(rgba(22, 23, 27, .11) 1.5px, transparent 1.5px);
-    background-size: 32px 32px;
-    color: #16171B;
-    font-family: "IBM Plex Sans KR", "Apple SD Gothic Neo", sans-serif;
+    background: #FFFFFF;
+    color: #0A0A0A;
+    font-family: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", sans-serif;
     word-break: keep-all;
     position: relative;
   }
-  .frame { position: absolute; inset: 0; padding: 72px 88px; display: flex; flex-direction: column; }
-  .rule { position: absolute; left: 0; right: 0; height: 1px; background: #D8D5CD; }
-  .rule.top { top: 10px; } .rule.bottom { bottom: 10px; }
-  .tags { display: flex; justify-content: space-between; font-family: "IBM Plex Mono", monospace; font-size: 22px; letter-spacing: .14em; text-transform: uppercase; color: #83848C; }
-  .tags .credit { color: #B65E05; }
-  .wordmark { margin: 44px 0 0; display: flex; align-items: flex-end; gap: 22px; font-size: 150px; font-weight: 700; letter-spacing: -.045em; line-height: 1; }
-  .wordmark .block { width: 24px; height: 88px; background: #1F4FD8; margin-bottom: 14px; }
-  .lede { margin: 40px 0 0; font-size: 64px; font-weight: 600; letter-spacing: -.03em; line-height: 1.2; }
-  .foot { margin-top: auto; display: flex; justify-content: space-between; align-items: baseline; }
-  .sub { font-size: 26px; font-weight: 300; color: #56575F; }
-  .url { font-family: "IBM Plex Mono", monospace; font-size: 22px; letter-spacing: .06em; color: #1F4FD8; }
+  .mono { font-family: "IBM Plex Mono", monospace; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+  .bar { position: absolute; left: 0; right: 0; top: 0; height: 96px; border-bottom: 6px solid #0A0A0A; display: flex; align-items: center; gap: 16px; padding: 0 72px; font-size: 34px; font-weight: 900; letter-spacing: -.03em; }
+  .mark { display: grid; place-items: center; width: 52px; height: 52px; background: #0A0A0A; color: #FFFFFF; font-size: 28px; }
+  .credit { margin-left: auto; font-size: 22px; background: #0A0A0A; color: #FFDE59; padding: 6px 14px; }
+  .frame { position: absolute; left: 72px; right: 72px; top: 150px; bottom: 60px; display: flex; flex-direction: column; }
+  .tag { font-size: 22px; }
+  .wordmark { margin: 18px 0 0; display: flex; align-items: flex-end; gap: 18px; font-size: 150px; font-weight: 900; letter-spacing: -.055em; line-height: .95; }
+  .wordmark .block { width: 22px; height: 92px; background: #00D4FF; border: 3px solid #0A0A0A; margin-bottom: 12px; }
+  .lede { margin: 34px 0 0; font-size: 60px; font-weight: 800; letter-spacing: -.035em; line-height: 1.2; }
+  mark { background: #FFDE59; color: #0A0A0A; padding: 0 .15em; }
+  .url { position: absolute; right: 0; bottom: 0; font-size: 22px; border: 3px solid #0A0A0A; box-shadow: 6px 6px 0 #0A0A0A; padding: 10px 18px; background: #FFFFFF; }
+  .steps { position: absolute; right: 0; top: 0; display: flex; flex-direction: column; gap: 14px; }
+  .step { width: 300px; display: flex; align-items: baseline; gap: 14px; padding: 12px 18px; border: 3px solid #0A0A0A; box-shadow: 5px 5px 0 #0A0A0A; font-size: 32px; font-weight: 900; letter-spacing: -.03em; }
+  .step .n { font-family: "IBM Plex Mono", monospace; font-size: 20px; font-weight: 600; }
 </style>
 </head>
 <body>
-  <div class="rule top"></div><div class="rule bottom"></div>
+  <div class="bar"><span class="mark">오</span>오랩실<span class="credit mono">credit 03</span></div>
   <div class="frame">
-    <div class="tags"><span>ai research community</span><span class="credit">credit 03</span></div>
+    <div class="tag mono">ai research community</div>
     <div class="wordmark">오랩실<span class="block"></span></div>
-    <div class="lede">AI의 사용자에서, 저자로</div>
-    <div class="foot">
-      <span class="sub">직접 실험하고 결과를 논문으로 남깁니다</span>
-      <span class="url">ohlabsil.github.io</span>
+    <div class="lede">AI의 사용자에서, <mark>저자</mark>로</div>
+    <div class="steps">
+      <div class="step" style="background:#00D4FF"><span class="n">01</span>읽습니다</div>
+      <div class="step" style="background:#FF7AB6"><span class="n">02</span>돌려봅니다</div>
+      <div class="step" style="background:#FFDE59"><span class="n">03</span>씁니다</div>
     </div>
+    <span class="url mono">ohlabsil.github.io</span>
   </div>
 </body>
 </html>
