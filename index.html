@@ -479,6 +479,51 @@
   .foot-logo .logo-mark { background: var(--yellow); color: #0A0A0A; }
   .people { display: flex; flex-wrap: wrap; gap: .3rem 1.5rem; color: #A6A49C; }
   .people b { color: #F4F2EA; font-weight: 600; }
+
+  /* 오락실 회차 — 회차 머리 + 순서표 */
+  .round { padding: 0; overflow: hidden; }
+  .round-head {
+    display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem 1.2rem;
+    padding: 1.1rem 1.4rem;
+    background: var(--yellow); color: var(--on-color);
+    border-bottom: var(--bw) solid var(--line);
+  }
+  .round-tag { flex: none; white-space: nowrap; background: #0A0A0A; color: var(--yellow); padding: .1rem .5rem; line-height: 1.5; }
+  .round-when { font-size: var(--step-1); font-weight: 900; letter-spacing: -.03em; line-height: 1.3; }
+  .round-where { font-size: var(--step--1); font-weight: 800; }
+
+  .rundown { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+  .run-row {
+    display: grid; grid-template-columns: 5.5rem 1fr auto; gap: .5rem 1.4rem;
+    align-items: baseline; padding: 1.05rem 1.4rem;
+    border-bottom: var(--bw) solid var(--line);
+  }
+  .run-row:last-child { border-bottom: 0; }
+  .run-row > time {
+    justify-self: start; flex: none;
+    background: var(--cyan); color: var(--on-color);
+    border: var(--bw) solid var(--line); padding: .1rem .5rem; line-height: 1.5;
+  }
+  .run-row.break > time { background: var(--pink); }
+  .run-row .what { color: var(--ink); font-weight: 900; letter-spacing: -.02em; line-height: 1.4; }
+  .run-row .what small { display: block; color: var(--ink-3); font-size: var(--step--1); font-weight: 400; letter-spacing: 0; line-height: 1.7; margin-top: .25rem; }
+  .run-dur { color: var(--ink-3); }
+
+  .talks { list-style: none; margin: .7rem 0 .1rem; padding: 0; display: flex; flex-direction: column; gap: .25rem; }
+  .talks li { display: grid; grid-template-columns: 5rem 1fr; gap: .9rem; font-size: var(--step--1); font-weight: 400; letter-spacing: 0; line-height: 1.8; color: var(--ink-2); }
+  .talks .who { font-weight: 800; color: var(--ink); }
+
+  @media (max-width: 34rem) {
+    .run-row { grid-template-columns: 1fr; }
+    .run-dur { grid-row: 1; justify-self: end; }
+    .run-row > time { grid-row: 1; }
+  }
+
+  .round-foot { display: flex; flex-wrap: wrap; align-items: baseline; gap: .4rem 1rem; padding: 1.05rem 1.4rem; border-top: var(--bw) solid var(--line); }
+  .round-fee { font-weight: 900; letter-spacing: -.02em; }
+  .round-fee-note { color: var(--ink-3); font-size: var(--step--1); }
+  .round-apply { margin-left: auto; padding: .9rem 1.5rem; font-size: var(--step-0); font-weight: 900; letter-spacing: -.01em; }
+  @media (max-width: 40rem) { .round-apply { margin-left: 0; width: 100%; justify-content: center; } }
 </style>
 </head>
 <body>
@@ -490,7 +535,7 @@
       <a href="#name">이름</a>
       <a href="#people">멤버</a>
       <a href="#ops">운영</a>
-      <a href="#offline">오프라인</a>
+      <a href="#offline">오락실</a>
       <a href="#log">요즘</a>
     </nav>
     <div class="bar-end">
@@ -694,7 +739,7 @@
     <div class="shell band-inner">
       <p class="eyebrow label-ko">오프라인 세미나</p>
       <h2>석 달에 한 번, 오락실 문을 엽니다</h2>
-      <p class="dim">평소에는 격주로 화면 너머에서 만납니다.<br>분기마다 한 번은 노트북을 들고 <span class="nb">한자리에 모입니다.</span></p>
+      <p class="dim">평소에는 격주로 화면 너머에서 만납니다.<br>분기마다 한 번은 노트북을 들고 <span class="nb">한자리에 모입니다.</span><br>그 자리의 이름이 <span class="nb">「오락실」입니다.</span></p>
       <div class="topics">
         <article class="topic box">
           <span class="en mono">offline</span>
@@ -712,6 +757,62 @@
           <p>오랩실 멤버가 아니어도 괜찮습니다.<br><span class="nb">한 판</span> 구경하고 가셔도 되고, <span class="nb">그러다 눌러앉으셔도 됩니다.</span></p>
         </article>
       </div>
+
+      <div class="round box">
+        <div class="round-head">
+          <span class="round-tag mono">round 01</span>
+          <span class="round-when">2026년 11월 5일 목요일 <span class="nb">저녁 7시 &ndash; 9시 30분</span></span>
+          <span class="round-where">공덕역 프론트원</span>
+        </div>
+        <ol class="rundown">
+          <li class="run-row">
+            <time class="mono" datetime="2026-11-05T19:00">19:00</time>
+            <span class="what">세션 1 &middot; 논문 발표
+              <small>한 사람당 10분 발표, <span class="nb">5분 질문입니다.</span></small>
+              <ol class="talks">
+                <li><span class="who">오세용</span><span>LLM 경량화</span></li>
+                <li><span class="who">김희경</span><span>엣지 AI 경량화</span></li>
+                <li><span class="who">이은진</span><span>AI 추천 엔진</span></li>
+                <li><span class="who">장원준</span><span>데브옵스</span></li>
+              </ol>
+            </span>
+            <span class="run-dur mono">60min</span>
+          </li>
+          <li class="run-row break">
+            <time class="mono" datetime="2026-11-05T20:00">20:00</time>
+            <span class="what">피자 타임
+              <small>발표 때 못 한 질문은 <span class="nb">보통 여기서 풀립니다.</span></small>
+            </span>
+            <span class="run-dur mono">40min</span>
+          </li>
+          <li class="run-row">
+            <time class="mono" datetime="2026-11-05T20:40">20:40</time>
+            <span class="what">세션 2 &middot; 패널 토크 &#9312; <span class="nb">주니어 연구자의</span> <span class="nb">논문 도전기</span>
+              <small>모더레이터 오세용<br>패널 김희경 &middot; 이은진 &middot; 장원준</small>
+            </span>
+            <span class="run-dur mono">25min</span>
+          </li>
+          <li class="run-row">
+            <time class="mono" datetime="2026-11-05T21:05">21:05</time>
+            <span class="what">세션 2 &middot; 패널 토크 &#9313; <span class="nb">현업 개발자의</span> <span class="nb">에이전틱 코딩</span>
+              <small>모더레이터 오세용<br>패널 박진혁 &middot; 이현석 &middot; 임주현 &middot; 장우석</small>
+            </span>
+            <span class="run-dur mono">25min</span>
+          </li>
+          <li class="run-row">
+            <time class="mono" datetime="2026-11-05T21:30">21:30</time>
+            <span class="what">마무리
+              <small>다음 회차 발표자를 정하고 <span class="nb">문을 닫습니다.</span></small>
+            </span>
+            <span class="run-dur mono">&mdash;</span>
+          </li>
+        </ol>
+        <div class="round-foot">
+          <span class="round-fee">회비 2만원</span>
+          <span class="round-fee-note">피자와 콜라가 나옵니다.</span>
+          <a class="btn btn-ink round-apply" href="https://forms.gle/jRpcbNcGs41nQ8aR7" target="_blank" rel="noopener">이번 판 신청하기 <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
       <p class="dim">일정과 장소는 회차마다 따로 알려드립니다.</p>
     </div>
   </section>
@@ -721,6 +822,10 @@
       <p class="eyebrow label-ko">요즘</p>
       <h2>무엇을 읽고 <span class="nb">무엇을 굴리고</span> 있는지</h2>
       <div class="log">
+        <div class="log-row box">
+          <time class="mono" datetime="2026-11-05">2026.11.05</time>
+          <span class="what">오락실 1회를 엽니다<small>저녁 7시 공덕역 프론트원<br><span class="nb">논문 발표 네 편과</span> <span class="nb">패널 토크 두 판</span></small></span>
+        </div>
         <div class="log-row box">
           <time class="mono" datetime="2026-09-01">2026.09.01</time>
           <span class="what">오랩실을 시작했습니다<small>세 사람이 모여 이름을 짓고 첫 모임 <span class="nb">일정을 잡고 있습니다</span></small></span>
