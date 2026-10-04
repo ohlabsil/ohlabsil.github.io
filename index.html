@@ -292,7 +292,16 @@
   .band-inner { display: flex; flex-direction: column; gap: clamp(1.4rem, 3.5vw, 2.2rem); }
 
   .eyebrow { display: flex; align-items: center; gap: .8rem; margin: 0; color: var(--ink); }
-  .eyebrow::before { content: ""; width: 1.6rem; height: .5rem; background: var(--yellow); border: var(--bw) solid var(--line); flex: none; }
+  /* 섹션 라벨 — 색 견본처럼 읽히지 않게 색 대신 순번(STAGE 01…)을 단다 */
+  main { counter-reset: stage; }
+  .band { counter-increment: stage; }
+  .eyebrow::before {
+    content: "stage " counter(stage, decimal-leading-zero);
+    font-family: var(--mono); font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+    background: var(--ink); color: var(--ground);
+    padding: .1rem .5rem; line-height: 1.5; flex: none;
+  }
+  .tier .eyebrow::before { content: ""; width: 1.6rem; height: var(--bw); padding: 0; background: var(--ink); }
 
   h2 {
     font-size: var(--step-3);
@@ -476,13 +485,13 @@
   .copy.done { background: var(--cyan); }
   .copy[hidden] { display: none; }
 
-  /* ---------- 섹션 제목 옆 # 링크 (JS가 붙임) ---------- */
+  /* ---------- 섹션 라벨 맨 앞 # 링크 (JS가 붙임) — STAGE 칩 왼쪽 ---------- */
   .anchor {
+    order: -1;
     display: inline-grid; place-items: center;
-    width: 1.7em; height: 1.7em;
-    margin-left: .45em;
-    vertical-align: .35em;
-    font-family: var(--mono); font-size: var(--step-0); font-weight: 600; letter-spacing: 0; line-height: 1;
+    width: calc(1.5em + .2rem); height: calc(1.5em + .2rem);
+    margin-right: -.3rem;
+    font-family: var(--mono); font-size: var(--step--1); font-weight: 600; letter-spacing: 0; line-height: 1;
     color: var(--ink); background: var(--surface);
     border: var(--bw) solid var(--line);
     box-shadow: 2px 2px 0 var(--shadow);
@@ -490,7 +499,6 @@
   }
   .anchor:hover { background: var(--yellow); color: var(--on-color); }
   .anchor.done { background: var(--cyan); color: var(--on-color); }
-  @media (max-width: 34rem) { .anchor { font-size: var(--step--1); width: 1.5em; height: 1.5em; margin-left: .3em; } }
 
   .fineprint { display: flex; flex-direction: column; gap: .35rem; color: #2E2E2E; font-size: var(--step--1); line-height: 1.75; }
 
@@ -1008,28 +1016,19 @@
       });
     });
   })();
-  // 섹션 제목 옆 # 링크 — 누르면 주소에 #섹션이 붙고, 그 주소가 클립보드에 복사된다
+  // 섹션 라벨 맨 앞 # 링크 — 누르면 주소에 #섹션이 붙고, 그 주소가 클립보드에 복사된다
   (function () {
-    document.querySelectorAll(".band[id] h2").forEach(function (h) {
-      var id = h.closest(".band").id;
+    document.querySelectorAll(".band[id]").forEach(function (band) {
+      var label = band.querySelector(".eyebrow");
+      if (!label) return;
+      var id = band.id;
       var a = document.createElement("a");
       a.className = "anchor";
       a.href = "#" + id;
       a.textContent = "#";
       a.title = "#" + id + " 링크 복사";
       a.setAttribute("aria-label", "이 섹션 링크 (#" + id + ")");
-      // 마지막 단어와 묶어 #만 다음 줄로 떨어지지 않게 한다
-      var last = h.lastChild;
-      if (last.nodeType === 3) {
-        var text = last.textContent, cut = text.lastIndexOf(" ") + 1;
-        var nb = document.createElement("span");
-        nb.className = "nb";
-        nb.textContent = text.slice(cut);
-        last.textContent = text.slice(0, cut);
-        h.appendChild(nb);
-        last = nb;
-      }
-      last.appendChild(a);
+      label.appendChild(a);
       a.addEventListener("click", function () {
         if (!navigator.clipboard) return;
         navigator.clipboard.writeText(location.origin + location.pathname + "#" + id).then(function () {
