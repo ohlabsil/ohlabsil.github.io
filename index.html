@@ -333,6 +333,25 @@
   .now b { font-weight: 600; margin-right: .3rem; }
   .now span { white-space: nowrap; border: var(--bw) solid var(--line); padding: .2rem .6rem; background: var(--surface); line-height: 1.5; }
 
+  /* ---------- 수상 ---------- */
+  .awards { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+  @media (min-width: 60rem) { .awards { grid-template-columns: repeat(3, 1fr); } }
+  .award { display: flex; flex-direction: column; }
+  .award-head {
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    background: var(--c); color: var(--on-color);
+    border-bottom: var(--bw) solid var(--line);
+    padding: .7rem 1.4rem;
+  }
+  .award-head .prize { font-size: var(--step-1); font-weight: 900; letter-spacing: -.02em; }
+  .award-body { display: flex; flex-direction: column; gap: .35rem; padding: 1.3rem 1.4rem 1.5rem; flex: 1; }
+  .award h3 { margin: 0; font-size: var(--step-1); font-weight: 900; letter-spacing: -.03em; line-height: 1.35; }
+  .award .host { color: var(--ink-3); font-size: var(--step--1); }
+  .award .work { color: var(--ink-2); margin-top: .5rem; }
+  .award .who { display: flex; align-items: baseline; gap: .6rem; margin-top: auto; padding-top: 1rem; color: var(--ink); font-weight: 700; }
+  .award .who .label-ko { flex: none; color: var(--ink-3); }
+  .awards-note { color: var(--ink-3); font-size: var(--step--1); }
+
   /* ---------- 이름의 뜻 ---------- */
   .glosses { display: flex; flex-direction: column; gap: 1.2rem; margin: 0; }
   .gloss { display: grid; grid-template-columns: 9rem 1fr; }
@@ -535,6 +554,7 @@
       <a href="#work">하는 일</a>
       <a href="#name">이름</a>
       <a href="#people">멤버</a>
+      <a href="#awards">수상</a>
       <a href="#ops">운영</a>
       <a href="#offline">오락실</a>
       <a href="#log">요즘</a>
@@ -725,6 +745,43 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="band" id="awards">
+    <div class="shell band-inner">
+      <p class="eyebrow label-ko">수상</p>
+      <h2>만든 것으로 <span class="nb">먼저 평가받았습니다</span></h2>
+      <p class="dim">오랩실 멤버들이 팀을 꾸려 받은 상입니다.<br>오랩실을 시작하기 전의 기록도 <span class="nb">함께 적었습니다.</span></p>
+      <div class="awards">
+        <article class="award box">
+          <div class="award-head" style="--c: var(--yellow)"><span class="prize">대상</span><time class="mono" datetime="2026-10">2026.10</time></div>
+          <div class="award-body">
+            <h3>2026 국민 AI 빌더 챌린지</h3>
+            <p class="host">국민대학교 소프트웨어대학원</p>
+            <p class="work">유학생의 행정을 대신하는 <span class="nb">&lsquo;AI 채팅&rsquo;</span></p>
+            <p class="who"><span class="label-ko">멤버</span><span class="names"><span class="nb">오세용 ·</span> <span class="nb">김희경</span></span></p>
+          </div>
+        </article>
+        <article class="award box">
+          <div class="award-head" style="--c: var(--cyan)"><span class="prize">TOP100</span><time class="mono" datetime="2026-08">2026.08</time></div>
+          <div class="award-body">
+            <h3>2026 AI CHAMPION</h3>
+            <p class="host">과학기술정보통신부</p>
+            <p class="who"><span class="label-ko">멤버</span><span class="names"><span class="nb">윤택한 ·</span> <span class="nb">장원준 ·</span> <span class="nb">김지나 ·</span> <span class="nb">김희경 ·</span> <span class="nb">오세용</span></span></p>
+          </div>
+        </article>
+        <article class="award box">
+          <div class="award-head" style="--c: var(--pink)"><span class="prize">금상</span><time class="mono" datetime="2026-05">2026.05</time></div>
+          <div class="award-body">
+            <h3>2026 KMUCS EXPO</h3>
+            <p class="host">국민대학교 소프트웨어대학</p>
+            <p class="work">인플루언서 AI <span class="nb">추천 매칭 서비스</span></p>
+            <p class="who"><span class="label-ko">멤버</span><span class="names"><span class="nb">오세용 ·</span> <span class="nb">이은진</span></span></p>
+          </div>
+        </article>
+      </div>
+      <p class="awards-note">· 팀에 함께한 오랩실 멤버의 이름만 적었습니다.</p>
     </div>
   </section>
 
