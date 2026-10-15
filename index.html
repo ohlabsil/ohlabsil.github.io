@@ -411,11 +411,13 @@
   }
 
   .advisors { display: grid; grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr)); gap: 1.5rem; }
-  .advisor { --c: var(--lime); display: flex; align-items: center; gap: 1rem; padding: 1.2rem 1.4rem; }
-  .advisor > div { display: flex; flex-direction: column; gap: .3rem; }
+  .advisor { --c: var(--lime); display: flex; flex-direction: column; gap: .9rem; padding: 1.2rem 1.4rem; }
+  .advisor-id { display: flex; align-items: center; gap: 1rem; }
+  .advisor-id > div { display: flex; flex-direction: column; gap: .3rem; }
   .advisor .name-row { display: flex; align-items: center; flex-wrap: wrap; gap: .3rem .7rem; }
   .advisor .name { font-size: var(--step-2); line-height: 1.1; }
   .advisor .affil { color: var(--ink-3); }
+  .advisor p { color: var(--ink-2); font-size: var(--step--1); line-height: 1.8; max-width: none; }
 
   .members { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 1.5rem; }
   .member { display: flex; flex-direction: column; gap: .8rem; padding: 1.4rem; }
@@ -711,17 +713,22 @@
       <h2>먼저 가 본 사람들이 곁에 있습니다</h2>
       <div class="advisors">
         <div class="advisor box">
-          <span class="avatar" aria-hidden="true">김</span>
-          <div>
-            <div class="name-row"><span class="name">김세윤</span><span class="badge label-ko">어드바이저</span></div>
-            <span class="affil label-ko">아이피리본 변리사</span>
+          <div class="advisor-id">
+            <span class="avatar" aria-hidden="true">김</span>
+            <div>
+              <div class="name-row"><span class="name">김세윤</span><span class="badge label-ko">어드바이저</span></div>
+              <span class="affil label-ko">IP RIBBON 대표변리사</span>
+            </div>
           </div>
+          <p>반도체·AI 분야에서 <span class="nb">20년 이상</span> <span class="nb">국내외 특허와 IP 전략을</span> <span class="nb">수행해왔습니다.</span><br>오랩실에서는 <span class="nb">연구 아이디어가</span> <span class="nb">논문을 넘어</span> <span class="nb">특허와 사업으로</span> <span class="nb">이어질 수 있도록,</span> <span class="nb">권리화와 IP 전략에 대한</span> <span class="nb">방향을 제시합니다.</span></p>
         </div>
         <div class="advisor box">
-          <span class="avatar" aria-hidden="true">배</span>
-          <div>
-            <div class="name-row"><span class="name">배기석</span><span class="badge label-ko">어드바이저</span></div>
-            <span class="affil label-ko">펜타웍스 부사장</span>
+          <div class="advisor-id">
+            <span class="avatar" aria-hidden="true">배</span>
+            <div>
+              <div class="name-row"><span class="name">배기석</span><span class="badge label-ko">어드바이저</span></div>
+              <span class="affil label-ko">펜타웍스 부사장</span>
+            </div>
           </div>
         </div>
       </div>
