@@ -12,7 +12,8 @@
 
 ## 사람 추가
 
-- 지도교수: `.advisor` 한 행
+- 지도교수(`#professor`): `.professor` 한 행
+- 어드바이저(`#advisor`): `.advisors` 안의 `.advisor` 카드. 가나다순. 「함께하는 사람」 숫자에는 세지 않습니다.
 - 리드 · 코어: `.members` 안의 `.member` 카드
 - 멤버: `.roster` 안에 `.roster-row` 한 줄. 코어로 올라가면 행을 지우고 카드로 옮깁니다.
 

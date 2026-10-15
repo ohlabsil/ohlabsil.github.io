@@ -400,15 +400,22 @@
   .badge { display: inline-block; align-self: flex-start; justify-self: start; padding: .1rem .5rem; background: var(--ink); color: var(--ground); line-height: 1.5; }
   .name { font-weight: 900; letter-spacing: -.035em; }
 
-  .advisor { display: grid; grid-template-columns: 15rem 1fr; gap: 1rem clamp(1.5rem, 4vw, 3rem); padding: clamp(1.4rem, 3.5vw, 2rem); }
-  .advisor-id { display: grid; grid-template-columns: auto 1fr; gap: .2rem 1rem; align-items: center; align-content: start; }
-  .advisor-id .avatar { grid-row: span 3; }
-  .advisor .name { font-size: var(--step-2); line-height: 1.2; }
-  .advisor .affil { color: var(--ink-3); }
-  .advisor-body p { color: var(--ink-2); max-width: none; }
+  .professor { display: grid; grid-template-columns: 15rem 1fr; gap: 1rem clamp(1.5rem, 4vw, 3rem); padding: clamp(1.4rem, 3.5vw, 2rem); }
+  .professor-id { display: grid; grid-template-columns: auto 1fr; gap: .2rem 1rem; align-items: center; align-content: start; }
+  .professor-id .avatar { grid-row: span 3; }
+  .professor .name { font-size: var(--step-2); line-height: 1.2; }
+  .professor .affil { color: var(--ink-3); }
+  .professor-body p { color: var(--ink-2); max-width: none; }
   @media (max-width: 40rem) {
-    .advisor { grid-template-columns: 1fr; }
+    .professor { grid-template-columns: 1fr; }
   }
+
+  .advisors { display: grid; grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr)); gap: 1.5rem; }
+  .advisor { --c: var(--lime); display: flex; align-items: center; gap: 1rem; padding: 1.2rem 1.4rem; }
+  .advisor > div { display: flex; flex-direction: column; gap: .3rem; }
+  .advisor .name-row { display: flex; align-items: center; flex-wrap: wrap; gap: .3rem .7rem; }
+  .advisor .name { font-size: var(--step-2); line-height: 1.1; }
+  .advisor .affil { color: var(--ink-3); }
 
   .members { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 1.5rem; }
   .member { display: flex; flex-direction: column; gap: .8rem; padding: 1.4rem; }
@@ -680,19 +687,42 @@
     </div>
   </section>
 
-  <section class="band" id="advisor">
+  <section class="band" id="professor">
     <div class="shell band-inner">
       <p class="eyebrow label-ko">지도교수</p>
       <h2>저자가 되는 길을 함께 봐주십니다</h2>
-      <div class="advisor box">
-        <div class="advisor-id">
+      <div class="professor box">
+        <div class="professor-id">
           <span class="avatar" aria-hidden="true" style="--c: var(--lime)">이</span>
           <span class="name">이창우</span>
           <span class="badge label-ko">지도교수</span>
           <span class="affil label-ko">국민대학교 교수</span>
         </div>
-        <div class="advisor-body">
+        <div class="professor-body">
           <p>컴퓨터 네트워크, 인공지능, 엣지 컴퓨팅, IoT, 클라우드를 연구하십니다.<br>오랩실에서는 <span class="nb">주제를 정하는 일부터</span> <span class="nb">실험 설계,</span> 논문 작성, <br class="pc"><span class="nb">학술지·학술대회</span> 투고까지 지도하십니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="advisor">
+    <div class="shell band-inner">
+      <p class="eyebrow label-ko">어드바이저</p>
+      <h2>먼저 가 본 사람들이 곁에 있습니다</h2>
+      <div class="advisors">
+        <div class="advisor box">
+          <span class="avatar" aria-hidden="true">김</span>
+          <div>
+            <div class="name-row"><span class="name">김세윤</span><span class="badge label-ko">어드바이저</span></div>
+            <span class="affil label-ko">아이피리본 변리사</span>
+          </div>
+        </div>
+        <div class="advisor box">
+          <span class="avatar" aria-hidden="true">배</span>
+          <div>
+            <div class="name-row"><span class="name">배기석</span><span class="badge label-ko">어드바이저</span></div>
+            <span class="affil label-ko">펜타웍스 부사장</span>
+          </div>
         </div>
       </div>
     </div>
