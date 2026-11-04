@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /og/
+
+Sitemap: https://ohlabsil.github.io/sitemap.xml
